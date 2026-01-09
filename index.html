@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Std 9 Physics Game</title>
+<meta charset="UTF-8">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg,#141e30,#243b55);
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+
+.card {
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 420px;
+  border-radius: 15px;
+}
+
+button {
+  background: #00ffcc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00ccaa;
+}
+
+.bar-bg {
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 20px;
+  width: 0%;
+  background: #00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<h1>⚡ Std 9 Physics RPG ⚡</h1>
+<p>Learn Physics like a game</p>
+
+<div class="card">
+<h2>👤 Player</h2>
+<p>Level: <span id="level">1</span></p>
+<p>XP: <span id="xp">0</span>/100</p>
+<div class="bar-bg">
+  <div class="bar" id="xpBar"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>📖 Story</h2>
+<p id="story">
+Welcome, Apprentice Physicist!  
+Your first mission is **Motion**.
+</p>
+</div>
+
+<div class="card">
+<h2>🎯 Mission</h2>
+<p id="question">
+Which law states that a body continues in its state of rest or uniform motion unless acted upon by an external force?
+</p>
+
+<button onclick="correct()">Newton’s First Law</button><br><br>
+<button onclick="wrong()">Newton’s Second Law</button>
+</div>
+
+<script>
+let xp = 0;
+let level = 1;
+
+function updateUI() {
+  document.getElementById("xp").innerText = xp;
+  document.getElementById("level").innerText = level;
+  document.getElementById("xpBar").style.width = xp + "%";
+}
+
+function correct() {
+  xp += 25;
+  if (xp >= 100) {
+    xp = 0;
+    level++;
+    alert("🎉 LEVEL UP! You are now Level " + level);
+    document.getElementById("story").innerText =
+      "New Chapter Unlocked: Force & Laws of Motion!";
+  }
+  updateUI();
+}
+
+function wrong() {
+  alert("❌ Wrong answer. Try again!");
+}
+
+updateUI();
+</script>
+
+</body>
+</html>
+
+
+
